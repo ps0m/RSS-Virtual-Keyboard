@@ -1,0 +1,115 @@
+@import "_normilize.scss";
+@import url(https://fonts.googleapis.com/css?family=JetBrains+Mono:regular,700);
+
+body {
+  background-color: antiquewhite;
+  height: 100%;
+  font-family: JetBrains Mono;
+  font-weight: 400;
+  letter-spacing: 0.5pt;
+  color: darkslategray;
+}
+
+.container {
+  max-width: 1280px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  text-align: center;
+  font-size: 3em;
+  font-weight: 500;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 auto;
+  &__field{
+    width: 845px;
+    height: 250px;
+    resize: none;
+    margin: 0px 0px 30px 0px;
+    border: 5px solid darkslategray;
+  }
+  &__keyboard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 845px;
+    min-height: 300px;
+    padding: 5px;
+    background-color: gold;
+    border: 5px solid darkslategray;
+  }
+  &__notate{
+    width: 800px;
+    font-size: 1.5em;
+    text-align: center;
+    white-space: pre-line;
+  }
+}
+
+.key {
+  position: relative;
+  display: flex;
+  flex: 0 1 45px;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  margin: 5px;
+  text-align: center;
+  word-wrap: break-word;
+  font-size: 0.8em;
+  background-color: antiquewhite;
+  border: 3px solid darkslategray;
+  transition: 0.3s;
+  &:hover{
+    cursor: pointer;
+    background-color: rgba(250, 230, 215, 0.8);
+  }
+  &_shining {
+    background-color: rgb(255, 174, 150);
+      -webkit-box-shadow: 0px 0px 5px 1px rgba(212, 136, 115, 1);
+      -moz-box-shadow: 0px 0px 5px 1px rgba(212, 136, 115, 1);
+      box-shadow: 0px 0px 5px 1px rgba(212, 136, 115, 1);
+  }
+  &_big, &_tiny{
+    flex: 1 1 80px;
+    // &:hover{
+    // }
+  }
+  &_tiny {
+    flex: 1 1 180px;
+  }
+  &__caps{
+    &::after{
+      content: "";
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: grey;
+  }
+    &_active {
+      &::after{
+      background-color: rgb(0, 255, 0);
+      }
+    }
+  }
+}
+
+
+// .footer{
+
+// }
