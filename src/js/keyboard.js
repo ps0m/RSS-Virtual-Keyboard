@@ -29,6 +29,13 @@ class MyKeyboard {
     main.classList.add("main");
     container.appendChild(main);
 
+    const mainNotate = document.createElement("p");
+    mainNotate.classList.add("main__notate");
+    main.appendChild(mainNotate);
+    mainNotate.textContent = `Keyboard was creating in operating system Windows.
+      For change language use LeftControl + LeftAlt
+      (Double click LeftControl + LeftAlt if you\`ll using virtual keyboard)`;
+
     this.mainField = document.createElement("textarea");
     this.mainField.classList.add("main__field");
     this.mainField.setAttribute("cols", "10");
@@ -38,13 +45,6 @@ class MyKeyboard {
     this.mainKeyboard = document.createElement("div");
     this.mainKeyboard.classList.add("main__keyboard");
     main.appendChild(this.mainKeyboard);
-
-    const mainNotate = document.createElement("p");
-    mainNotate.classList.add("main__notate");
-    main.appendChild(mainNotate);
-    mainNotate.textContent = `Keyboard was creating in operating system Windows.
-      For change language use LeftControl + LeftAlt
-      (Double click LeftControl + LeftAlt if you\`ll using virtual keyboard)`;
 
     const footer = document.createElement("footer");
     footer.classList.add("footer");
@@ -58,7 +58,7 @@ class MyKeyboard {
 
     const footerLogo = document.createElement("a");
     footerLogo.classList.add("footer__logo");
-    footerLink.setAttribute("href", "https://github.com/rolling-scopes-school/tasks/tree/master/stage1");
+    footerLogo.setAttribute("href", "https://github.com/rolling-scopes-school/tasks/tree/master/stage1");
     footer.appendChild(footerLogo);
 
     this.keySet = [];
@@ -107,8 +107,8 @@ class MyKeyboard {
       ].code === "CapsLock") {
         button.classList.add("key__caps");
       }
+      this.setMainFieldFocus();
     }
-    this.setMainFieldFocus();
   }
 
   setValue() {
@@ -252,7 +252,7 @@ class MyKeyboard {
       if (this.keySet[number
       ].code === "Tab") {
         event.preventDefault();
-        this.mainField.setRangeText("r", this.mainField.selectionStart, this.mainField.selectionEnd, "end");
+        this.mainField.setRangeText("\t", this.mainField.selectionStart, this.mainField.selectionEnd, "end");
       }
       if (this.keySet[number
       ].code === "CapsLock") {
@@ -365,7 +365,6 @@ class MyKeyboard {
   }
 
   setMainFieldFocus() {
-    this.mainField.focus();
     this.mainField.addEventListener("blur", () => {
       this.mainField.focus();
     });
