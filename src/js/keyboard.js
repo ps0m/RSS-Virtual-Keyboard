@@ -39,6 +39,7 @@ class MyKeyboard {
     this.mainField = document.createElement("textarea");
     this.mainField.classList.add("main__field");
     this.mainField.setAttribute("cols", "10");
+
     this.mainField.value = "";
     main.appendChild(this.mainField);
 
@@ -267,34 +268,6 @@ class MyKeyboard {
         }
         this.properties.isShift = !this.properties.isShift;
         this.setValue();
-      }
-      if (this.keySet[number].code === "ArrowLeft") {
-        if (this.mainField.selectionStart !== 0) {
-          this.mainField.setSelectionRange(
-            this.mainField.selectionStart,
-            this.mainField.selectionStart - 1,
-          );
-        }
-      }
-      if (this.keySet[number].code === "ArrowRight") {
-        this.mainField.setSelectionRange(
-          this.mainField.selectionStart + 1,
-          this.mainField.selectionStart + 1,
-        );
-      }
-      if (this.keySet[number].code === "ArrowUp") {
-        this.mainField.setSelectionRange(
-          this.mainField.selectionStart - 69,
-          this.mainField.selectionStart - 69,
-        );
-      }
-      if (this.keySet[number].code === "ArrowDown") {
-        if (this.mainField.selectionStart !== 0) {
-          this.mainField.setSelectionRange(
-            this.mainField.selectionStart + 69,
-            this.mainField.selectionStart + 69,
-          );
-        }
       }
     });
 

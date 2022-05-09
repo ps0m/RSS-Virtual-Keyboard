@@ -155,7 +155,7 @@ const ListSetKey = [{
   key: "/", code: "Slash", textEn: "/", textEnShift: "?", textRu: ".", textRuShift: ",", size: "normal", assignment: "symbol",
 },
 {
-  key: "ArrowUp", code: "ArrowUp", textEn: "⮝", textEnShift: "⮝", textRu: "⮝", textRuShift: "⮝", size: "normal", assignment: "functional",
+  key: "ArrowUp", code: "ArrowUp", textEn: "⮝", textEnShift: "⮝", textRu: "⮝", textRuShift: "⮝", size: "normal", assignment: "symbol",
 },
 {
   key: "Shift", code: "ShiftRight", textEn: "Shift", textEnShift: "Shift", textRu: "Shift", textRuShift: "Shift", size: "big", assignment: "functional",
@@ -179,13 +179,13 @@ const ListSetKey = [{
   key: "Control", code: "ControlRight", textEn: "Ctrl", textEnShift: "Ctrl", textRu: "Ctrl", textRuShift: "Ctrl", size: "normal", assignment: "functional",
 },
 {
-  key: "ArrowLeft", code: "ArrowLeft", textEn: "⮜", textEnShift: "⮜", textRu: "⮜", textRuShift: "⮜", size: "normal", assignment: "functional",
+  key: "ArrowLeft", code: "ArrowLeft", textEn: "⮜", textEnShift: "⮜", textRu: "⮜", textRuShift: "⮜", size: "normal", assignment: "symbol",
 },
 {
-  key: "ArrowDown", code: "ArrowDown", textEn: "⮟", textEnShift: "⮟", textRu: "⮟", textRuShift: "⮟", size: "normal", assignment: "functional",
+  key: "ArrowDown", code: "ArrowDown", textEn: "⮟", textEnShift: "⮟", textRu: "⮟", textRuShift: "⮟", size: "normal", assignment: "symbol",
 },
 {
-  key: "ArrowRight", code: "ArrowRight", textEn: "⮞", textEnShift: "⮞", textRu: "⮞", textRuShift: "⮞", size: "normal", assignment: "functional",
+  key: "ArrowRight", code: "ArrowRight", textEn: "⮞", textEnShift: "⮞", textRu: "⮞", textRuShift: "⮞", size: "normal", assignment: "symbol",
 },
 {
   key: "Delete", code: "Delete", textEn: "Del", textEnShift: "Del", textRu: "Del", textRuShift: "Del", size: "normal", assignment: "functional",
