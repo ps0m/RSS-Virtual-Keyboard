@@ -188,6 +188,6 @@ const ListSetKey = [{
   key: "ArrowRight", code: "ArrowRight", textEn: "⮞", textEnShift: "⮞", textRu: "⮞", textRuShift: "⮞", size: "normal", assignment: "functional",
 },
 {
-  key: "EN", code: "", textEn: "EN", textEnShift: "EN", textRu: "РУС", textRuShift: "РУС", size: "normal", assignment: "functional",
+  key: "Delete", code: "Delete", textEn: "Del", textEnShift: "Del", textRu: "Del", textRuShift: "Del", size: "normal", assignment: "functional",
 }];
 export default ListSetKey;

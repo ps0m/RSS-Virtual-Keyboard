@@ -1,23 +1,32 @@
 @import "_normilize.scss";
 @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:regular,700);
+@import url(https://fonts.googleapis.com/css?family=Rubik+Wet+Paint:regular);
+
+$color1: #2a2d2d; 
+$color2: #ea0e12;
+$color3: #ff7300;
 
 body {
-  background-color: antiquewhite;
+  background-color: #e4e4e4;
   height: 100%;
-  font-family: Ubuntu Mono;
+  font-family: Rubik Wet Paint;
   font-weight: 400;
   letter-spacing: 0.5pt;
-  color: darkslategray;
+  color: $color1;
+  
 }
 
 .container {
-  max-width: 1280px;
-  min-height: 100%;
-  display: flex;
   flex-direction: column;
+  display: flex;
+  justify-content: center;
+  max-width: 850px;
+  min-height: 100%;
+  margin: 0 auto;
 }
 
 .header{
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,7 +34,19 @@ body {
   text-align: center;
   font-size: 3em;
   font-weight: 700;
+  &::after{
+    content: '';
+    width: 120px;
+    height: 80px;
+    background: url(../assets/image/png/logo.png);
+    background-size: cover;
+    // transform: translate(-50%);
+  }
 }
+.header span{
+  color: $color3;
+}
+
 
 .main{
   display: flex;
@@ -38,22 +59,52 @@ body {
     height: 250px;
     resize: none;
     margin: 0px 0px 30px 0px;
-    border: 5px solid darkslategray;
+    text-decoration: none;
+    border: 10px solid #fff;
+    border-radius: 5px;
+    font-family: Ubuntu Mono;
     font-size: 1.5em;
+    box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.2);
+    &:focus{
+    outline: none;
+    }
   }
   &__keyboard{
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 845px;
+    min-width: 845px;
     min-height: 300px;
-    padding: 5px;
-    background-color: gold;
-    border: 5px solid darkslategray;
+    padding: 5px 5px 15px 15px;
+    background-color: rgba(47, 79, 79, 0.476);
+    border-radius: 10px;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:url('../assets/image/png/back.png');
+      background-size: cover;
+      border-radius: inherit;
+      transform: translate3d(0px, -10px, 0px);
+      box-shadow: 0 5px 5px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    
   }
   &__notate{
-    width: 800px;
-    font-size: 1.5em;
+    width: 100%;
+    padding: 10px;
+    background-color: $color1;
+    color: $color3;
+    font-family: Ubuntu Mono;
+    font-size: 1.3em;
     text-align: center;
     white-space: pre-line;
   }
@@ -66,34 +117,65 @@ body {
   justify-content: center;
   align-items: center;
   height: 45px;
-  margin: 5px;
+  margin: 10px 5px;
   text-align: center;
   word-wrap: break-word;
-  font-size: 1em;
-  background-color: antiquewhite;
-  border: 3px solid darkslategray;
-  transition: 0.15s;
+  font-size: 0.9em;
+  background-color: $color1;
+  border-radius: 5px;
+  border: 1px solid #b7b6b6;
+  color:#fff;
+  transition: 0.2s;
+  transform-style: preserve-3d;
+  &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $color1;
+      border-radius: inherit;
+      transform: translate3d(0, 7px, -7px);
+      box-shadow: 0 5px 0 0 rgba(0, 0, 0, 0.2);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    &:active {
+      // background: $color2;
+      transform: translate(0, 3px);
+    }
+    &:active::before {
+      box-shadow: 0 0 #817d7d;
+      transform: translate3d(0, 5px, -5px);
+    }
   &:hover{
     cursor: pointer;
-    // background-color: rgba(250, 230, 215, 0);
-    -webkit-box-shadow: 0px 0px 10px 3px rgba(212, 136, 115, 1);
-    -moz-box-shadow: 0px 0px 10px 3px rgba(212, 136, 115, 1);
-    box-shadow: 0px 0px 10px 3px rgba(212, 136, 115, 1);
-  }
-  &_shining {
-    background-color: rgb(255, 174, 150);
-      -webkit-box-shadow: 0px 0px 10px 3px rgba(212, 136, 115, 1);
-      -moz-box-shadow: 0px 0px 10px 3px rgba(212, 136, 115, 1);
-      box-shadow: 0px 0px 10px 3px rgba(212, 136, 115, 1);
+    -webkit-box-shadow: 0px 0px 10px 3px $color2;
+    -moz-box-shadow: 0px 0px 10px 3px $color2;
+    box-shadow: 0px 0px 10px 3px $color2;
   }
   &_big, &_tiny{
     flex: 1 1 80px;
-    // &:hover{
-    // }
   }
   &_tiny {
     flex: 1 1 180px;
   }
+  &_shining {
+    -webkit-box-shadow: 0px 0px 10px 3px $color2;
+    -moz-box-shadow: 0px 0px 10px 3px $color2;
+    box-shadow: 0px 0px 10px 3px $color2;
+    transform: translate(0, 3px);
+    &::before {
+      box-shadow: 0 0 #817d7d;
+      transform: translate3d(0, 5px, -5px);
+    }
+  }
+  &_decorative {
+    background: $color3;
+  }
+  
   &__caps{
     &::after{
       content: "";
@@ -104,8 +186,13 @@ body {
       height: 7px;
       border-radius: 50%;
       background-color: grey;
-  }
+    }
     &_active {
+      transform: translate(0, 5px);
+      &::before {
+          box-shadow: 0 0 #817d7d;
+          transform: translate3d(0, 5px, -5px);
+        }
       &::after{
       background-color: rgb(0, 255, 0);
       }
@@ -113,7 +200,34 @@ body {
   }
 }
 
-
-// .footer{
-
-// }
+.footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  margin: 20px;
+  text-align: center;
+  &__link{
+    display: block;
+    font-size: 2em;
+    text-decoration: none;
+    color: inherit;
+    transition: 0.5s;
+    &:hover{
+      color: $color3;
+      transform: scale(1.1);
+    }
+  }
+  &__logo {
+    display: block;
+    width: 120px;
+    height: 60px;
+    background: url(../assets/image/svg/logoRss.svg) no-repeat;
+    background-size: cover;
+    transition: 0.5s;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+}

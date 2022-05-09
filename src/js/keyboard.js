@@ -1,18 +1,12 @@
 class MyKeyboard {
   constructor(KeyClass, listKey) {
     this.elements = {
-      container: null,
-      header: null,
-      main: null,
       mainField: null,
       mainKeyboard: null,
-      mainNotate: null,
-      button: null,
       keySet: null,
       keyBuffer: null,
     };
     this.properties = {
-      textValue: "",
       isCapsLock: false,
       isShift: false,
       lang: localStorage.getItem("langPs0m") || "En",
@@ -22,35 +16,50 @@ class MyKeyboard {
   }
 
   init() {
-    this.container = document.createElement("div");
-    this.container.classList.add("container");
-    document.body.prepend(this.container);
+    const container = document.createElement("div");
+    container.classList.add("container");
+    document.body.prepend(container);
 
-    this.header = document.createElement("header");
-    this.header.classList.add("header");
-    this.container.appendChild(this.header);
-    this.header.textContent = "RSS Виртуальная клавиатура";
+    const header = document.createElement("header");
+    header.classList.add("header");
+    container.appendChild(header);
+    header.innerHTML = "<span>RS</span>S Virtual Keybo<span>ard</span>";
 
-    this.main = document.createElement("div");
-    this.main.classList.add("main");
-    this.container.appendChild(this.main);
+    const main = document.createElement("div");
+    main.classList.add("main");
+    container.appendChild(main);
 
     this.mainField = document.createElement("textarea");
     this.mainField.classList.add("main__field");
-    // this.mainField.setAttribute("wrap", "hard");
     this.mainField.setAttribute("cols", "10");
-    this.mainField.value = "MyNamesSergeyImJuniorFrontendDeveloperMyNamesSergeyImJuniorFrontendDeveloperMyNamesSergeyImJuniorFrontendDeveloperMyNamesSergeyImJuniorFrontendDeveloperMyNamesSergeyImJuniorFrontendDeveloperMyNamesSergeyImJuniorFrontendDeveloperMyNamesSergeyImJuniorFrontendDeveloperMyNamesSergeyImJuniorFrontendDeveloperMyNamesSergeyImJuniorFrontendDeveloper";
-    this.main.appendChild(this.mainField);
+    this.mainField.value = "";
+    main.appendChild(this.mainField);
 
     this.mainKeyboard = document.createElement("div");
     this.mainKeyboard.classList.add("main__keyboard");
-    this.main.appendChild(this.mainKeyboard);
+    main.appendChild(this.mainKeyboard);
 
-    this.mainNotate = document.createElement("p");
-    this.mainNotate.classList.add("main__notate");
-    this.main.appendChild(this.mainNotate);
-    this.mainNotate.textContent = `Клавиатура создана в операционной системе Windows.
-    Для переключения языка комбинация: левыe ctrl + alt`;
+    const mainNotate = document.createElement("p");
+    mainNotate.classList.add("main__notate");
+    main.appendChild(mainNotate);
+    mainNotate.textContent = `Keyboard was creating in operating system Windows.
+      For change language use LeftControl + LeftAlt
+      (Double click LeftControl + LeftAlt if you\`ll using virtual keyboard)`;
+
+    const footer = document.createElement("footer");
+    footer.classList.add("footer");
+    container.appendChild(footer);
+
+    const footerLink = document.createElement("a");
+    footerLink.classList.add("footer__link");
+    footerLink.setAttribute("href", "https://github.com/ps0m?tab=repositories");
+    footerLink.textContent = "© 2022 github";
+    footer.appendChild(footerLink);
+
+    const footerLogo = document.createElement("a");
+    footerLogo.classList.add("footer__logo");
+    footerLink.setAttribute("href", "https://github.com/rolling-scopes-school/tasks/tree/master/stage1");
+    footer.appendChild(footerLogo);
 
     this.keySet = [];
     this.keyBuffer = new Set();
@@ -74,34 +83,35 @@ class MyKeyboard {
         ].assignment,
       );
       this.keySet.push(key);
-      // console.log(this.keySet[i]);
 
-      this.button = document.createElement("div");
-      this.button.classList.add("key");
-      this.mainKeyboard.append(this.button);
-      this.button.dataset.number = [i,
+      const button = document.createElement("div");
+      button.classList.add("key");
+      this.mainKeyboard.append(button);
+      button.dataset.number = [i,
       ];
-      this.button.dataset.code = this.keySet[i
+      button.dataset.code = this.keySet[i
       ].code;
       if (this.keySet[i
+      ].assignment === "functional") {
+        button.classList.add("key_decorative");
+      }
+      if (this.keySet[i
       ].size === "big") {
-        this.button.classList.add("key_big");
+        button.classList.add("key_big");
       }
       if (this.keySet[i
       ].size === "tiny") {
-        this.button.classList.add("key_tiny");
+        button.classList.add("key_tiny");
       }
       if (this.keySet[i
       ].code === "CapsLock") {
-        this.button.classList.add("key__caps");
+        button.classList.add("key__caps");
       }
     }
     this.setMainFieldFocus();
   }
 
   setValue() {
-    // console.log(`isCapsLock  ${this.properties.isCapsLock}`,
-    // `isShift ${this.properties.isShift}`);
     const language = this.properties.lang;
     for (let i = 0; i < this.keySet.length; i += 1) {
       if (!this.properties.isShift && !this.properties.isCapsLock) {
@@ -174,16 +184,11 @@ class MyKeyboard {
       }
 
       if (event.code === "CapsLock") {
-        // if (event.repeat) {
-        //   return;
-        // }
         this.changeActiveCapsLock();
         this.setValue();
       }
 
       if (event.code === "ShiftLeft" || event.code === "ShiftRight") {
-        // if (event.repeat) {
-        //   return;
         // }
         this.properties.isShift = !this.properties.isShift;
         this.setValue();
@@ -195,9 +200,7 @@ class MyKeyboard {
     });
 
     document.addEventListener("keyup", (event) => {
-      // console.log(event);
       this.keyBuffer.delete(event.code);
-      // this.checkShortCuts();
       for (let i = 0; i < this.mainKeyboard.children.length; i += 1) {
         if (event.code === this.mainKeyboard.children[i
         ].dataset.code) {
@@ -215,7 +218,6 @@ class MyKeyboard {
     });
 
     this.mainKeyboard.addEventListener("mousedown", (event) => {
-      // console.log(event);
       if (!event.target.closest(".key")) {
         return;
       }
@@ -224,7 +226,6 @@ class MyKeyboard {
       ].classList.add("key_shining");
 
       this.keyBuffer.add(event.target.dataset.code);
-      // console.log(this.keyBuffer);
       this.checkShortCuts();
 
       if (this.keySet[number
@@ -239,6 +240,12 @@ class MyKeyboard {
         }
       }
       if (this.keySet[number
+      ].code === "Delete") {
+        if (this.mainField.selectionStart !== 0) {
+          this.mainField.setRangeText("", this.mainField.selectionStart, this.mainField.selectionEnd + 1, "end");
+        }
+      }
+      if (this.keySet[number
       ].code === "Enter") {
         this.mainField.setRangeText("\n", this.mainField.selectionStart, this.mainField.selectionEnd, "end");
       }
@@ -246,8 +253,6 @@ class MyKeyboard {
       ].code === "Tab") {
         event.preventDefault();
         this.mainField.setRangeText("r", this.mainField.selectionStart, this.mainField.selectionEnd, "end");
-
-        // this.mainField.value += "    ";
       }
       if (this.keySet[number
       ].code === "CapsLock") {
