@@ -1,0 +1,1 @@
+{"version":3,"file":"main.js","mappings":";;;;;AAAA,IAAMA,QAAQ,GAAG,SAAXA,QAAW;EAAA,OAAMC,OAAO,CAACC,GAAR,CAAY,OAAZ,CAAN;AAAA,CAAjB;;AACAF,QAAQ,G","sources":["webpack://rss-virtual-keyboard/./src/index.js"],"sourcesContent":["const sayHello = () => console.log(\"hello\");\nsayHello();\n"],"names":["sayHello","console","log"],"sourceRoot":""}
