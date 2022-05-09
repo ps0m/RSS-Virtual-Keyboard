@@ -83,6 +83,10 @@ var MyKeyboard = /*#__PURE__*/function () {
       var main = document.createElement("div");
       main.classList.add("main");
       container.appendChild(main);
+      var mainNotate = document.createElement("p");
+      mainNotate.classList.add("main__notate");
+      main.appendChild(mainNotate);
+      mainNotate.textContent = "Keyboard was creating in operating system Windows.\n      For change language use LeftControl + LeftAlt\n      (Double click LeftControl + LeftAlt if you`ll using virtual keyboard)";
       this.mainField = document.createElement("textarea");
       this.mainField.classList.add("main__field");
       this.mainField.setAttribute("cols", "10");
@@ -91,10 +95,6 @@ var MyKeyboard = /*#__PURE__*/function () {
       this.mainKeyboard = document.createElement("div");
       this.mainKeyboard.classList.add("main__keyboard");
       main.appendChild(this.mainKeyboard);
-      var mainNotate = document.createElement("p");
-      mainNotate.classList.add("main__notate");
-      main.appendChild(mainNotate);
-      mainNotate.textContent = "Keyboard was creating in operating system Windows.\n      For change language use LeftControl + LeftAlt\n      (Double click LeftControl + LeftAlt if you`ll using virtual keyboard)";
       var footer = document.createElement("footer");
       footer.classList.add("footer");
       container.appendChild(footer);
@@ -105,7 +105,7 @@ var MyKeyboard = /*#__PURE__*/function () {
       footer.appendChild(footerLink);
       var footerLogo = document.createElement("a");
       footerLogo.classList.add("footer__logo");
-      footerLink.setAttribute("href", "https://github.com/rolling-scopes-school/tasks/tree/master/stage1");
+      footerLogo.setAttribute("href", "https://github.com/rolling-scopes-school/tasks/tree/master/stage1");
       footer.appendChild(footerLogo);
       this.keySet = [];
       this.keyBuffer = new Set();
@@ -134,9 +134,9 @@ var MyKeyboard = /*#__PURE__*/function () {
         if (this.keySet[i].code === "CapsLock") {
           button.classList.add("key__caps");
         }
-      }
 
-      this.setMainFieldFocus();
+        this.setMainFieldFocus();
+      }
     }
   }, {
     key: "setValue",
@@ -280,7 +280,7 @@ var MyKeyboard = /*#__PURE__*/function () {
         if (_this.keySet[number].code === "Tab") {
           event.preventDefault();
 
-          _this.mainField.setRangeText("r", _this.mainField.selectionStart, _this.mainField.selectionEnd, "end");
+          _this.mainField.setRangeText("\t", _this.mainField.selectionStart, _this.mainField.selectionEnd, "end");
         }
 
         if (_this.keySet[number].code === "CapsLock") {
@@ -389,7 +389,6 @@ var MyKeyboard = /*#__PURE__*/function () {
     value: function setMainFieldFocus() {
       var _this2 = this;
 
-      this.mainField.focus();
       this.mainField.addEventListener("blur", function () {
         _this2.mainField.focus();
       });
