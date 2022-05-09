@@ -298,26 +298,6 @@ var MyKeyboard = /*#__PURE__*/function () {
 
           _this.setValue();
         }
-
-        if (_this.keySet[number].code === "ArrowLeft") {
-          if (_this.mainField.selectionStart !== 0) {
-            _this.mainField.setSelectionRange(_this.mainField.selectionStart, _this.mainField.selectionStart - 1);
-          }
-        }
-
-        if (_this.keySet[number].code === "ArrowRight") {
-          _this.mainField.setSelectionRange(_this.mainField.selectionStart + 1, _this.mainField.selectionStart + 1);
-        }
-
-        if (_this.keySet[number].code === "ArrowUp") {
-          _this.mainField.setSelectionRange(_this.mainField.selectionStart - 69, _this.mainField.selectionStart - 69);
-        }
-
-        if (_this.keySet[number].code === "ArrowDown") {
-          if (_this.mainField.selectionStart !== 0) {
-            _this.mainField.setSelectionRange(_this.mainField.selectionStart + 69, _this.mainField.selectionStart + 69);
-          }
-        }
       });
       this.mainKeyboard.addEventListener("mouseup", function (event) {
         for (var i = 0; i < _this.mainKeyboard.children.length; i += 1) {
@@ -888,7 +868,7 @@ var ListSetKey = [{
   textRu: "⮝",
   textRuShift: "⮝",
   size: "normal",
-  assignment: "functional"
+  assignment: "symbol"
 }, {
   key: "Shift",
   code: "ShiftRight",
@@ -960,7 +940,7 @@ var ListSetKey = [{
   textRu: "⮜",
   textRuShift: "⮜",
   size: "normal",
-  assignment: "functional"
+  assignment: "symbol"
 }, {
   key: "ArrowDown",
   code: "ArrowDown",
@@ -969,7 +949,7 @@ var ListSetKey = [{
   textRu: "⮟",
   textRuShift: "⮟",
   size: "normal",
-  assignment: "functional"
+  assignment: "symbol"
 }, {
   key: "ArrowRight",
   code: "ArrowRight",
@@ -978,7 +958,7 @@ var ListSetKey = [{
   textRu: "⮞",
   textRuShift: "⮞",
   size: "normal",
-  assignment: "functional"
+  assignment: "symbol"
 }, {
   key: "Delete",
   code: "Delete",
