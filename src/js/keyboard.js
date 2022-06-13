@@ -40,9 +40,8 @@ class MyKeyboard {
     this.mainField = document.createElement("textarea");
     this.mainField.classList.add("main__field");
     this.mainField.setAttribute("cols", "10");
-    // this.mainField.value = "";
 
-    this.mainField.value = " adfsdfa dfkd dk djkdskdl sd ldlfdjf sdf dfdddl dsfd ds  sdf sd fsd f sd adfsdfa dfkd dk djkdskdl sd ldlfdjf sdf dfdddl dsfd ds  sdf sd fsd f sd adfsdfa dfkd dk djkdskdl sd ldlfdjf sdf dfdddl dsfd ds  sdf sd fsd f sd adfsdfa dfkd dk djkdskdl sd ldlfdjf sdf dfdddl dsfd ds  sdf sd fsd f sd adfsdfa dfkd dk djkdskdl sd ldlfdjf sdf dfdddl dsfd ds  sdf sd fsd f sd adfsdfa dfkd dk djkdskdl sd ldlfdjf dfdsf dfdfsdfsdfsdfsdf dsf sd fssssssssssssdddddddddddddddddddddddddddddddddddddddddddda";
+    this.mainField.value = "";
     main.appendChild(this.mainField);
 
     this.mainKeyboard = document.createElement("div");
