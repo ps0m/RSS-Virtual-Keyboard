@@ -31,6 +31,9 @@ module.exports = {
       keep: /\.git/,
     },
   },
+  clean: {
+    keep: /\.git/,
+  },
 
   devServer: {
     hot: true,
