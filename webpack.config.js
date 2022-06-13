@@ -26,7 +26,10 @@ module.exports = {
   devtool: "source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
-    clean: true,
+    // clean: true,
+    clean: {
+      keep: /\.git/,
+    },
   },
 
   devServer: {
