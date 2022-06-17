@@ -68,6 +68,7 @@ var MyKeyboard = /*#__PURE__*/function () {
     };
     this.KeyClass = KeyClass;
     this.listKey = listKey;
+    this.widthFont = 12.21;
   }
 
   _createClass(MyKeyboard, [{
@@ -298,6 +299,28 @@ var MyKeyboard = /*#__PURE__*/function () {
 
           _this.setValue();
         }
+
+        if (_this.keySet[number].code === "ArrowLeft") {
+          if (_this.mainField.selectionStart !== 0) {
+            _this.mainField.setSelectionRange(_this.mainField.selectionStart, _this.mainField.selectionStart - 1);
+          }
+        }
+
+        if (_this.keySet[number].code === "ArrowRight") {
+          _this.mainField.setSelectionRange(_this.mainField.selectionStart + 1, _this.mainField.selectionStart + 1);
+        }
+
+        if (_this.keySet[number].code === "ArrowUp") {
+          var positionUp = _this.moveCursorText(_this.getLengthStrings(), _this.mainField.selectionStart, "up");
+
+          _this.mainField.setSelectionRange(positionUp, positionUp);
+        }
+
+        if (_this.keySet[number].code === "ArrowDown") {
+          var positionDown = _this.moveCursorText(_this.getLengthStrings(), _this.mainField.selectionStart, "down");
+
+          _this.mainField.setSelectionRange(positionDown, positionDown);
+        }
       });
       this.mainKeyboard.addEventListener("mouseup", function (event) {
         for (var i = 0; i < _this.mainKeyboard.children.length; i += 1) {
@@ -372,6 +395,89 @@ var MyKeyboard = /*#__PURE__*/function () {
       this.mainField.addEventListener("blur", function () {
         _this2.mainField.focus();
       });
+    }
+  }, {
+    key: "getLengthStrings",
+    value: function getLengthStrings() {
+      var wholeLine = this.mainField.value;
+      var arrayOfStringLength = [0];
+      var maxLengthString = Math.ceil(this.mainField.clientWidth / this.widthFont);
+      var currentSymbol = 0;
+      var lastWord = 0;
+
+      for (var i = 0; i < wholeLine.length; i += 1) {
+        currentSymbol += 1;
+
+        if (wholeLine[i] === "\n") {
+          lastWord = 0;
+          arrayOfStringLength[arrayOfStringLength.length - 1] = currentSymbol;
+          currentSymbol = 0;
+          arrayOfStringLength.push(currentSymbol);
+        }
+
+        if (wholeLine[i] === " ") {
+          lastWord = currentSymbol;
+        }
+
+        if (currentSymbol < maxLengthString) {
+          arrayOfStringLength[arrayOfStringLength.length - 1] = currentSymbol;
+        }
+
+        if (maxLengthString < currentSymbol) {
+          if (wholeLine[i] !== " ") {
+            if (!lastWord) {
+              lastWord = currentSymbol - 1;
+            }
+
+            arrayOfStringLength[arrayOfStringLength.length - 1] = lastWord;
+            currentSymbol -= lastWord; // } else {
+
+            lastWord = 0;
+            arrayOfStringLength.push(currentSymbol);
+          }
+        }
+      }
+
+      return arrayOfStringLength;
+    }
+  }, {
+    key: "moveCursorText",
+    value: function moveCursorText(arrayStrings, numberInField, direction) {
+      if (numberInField === this.mainField.value.length && direction === "down" || numberInField === 0 && direction === "up") {
+        return numberInField;
+      }
+
+      var numberInRow = numberInField;
+
+      for (var i = 0; i < arrayStrings.length; i += 1) {
+        numberInRow -= arrayStrings[i];
+
+        if (numberInRow < 0) {
+          if (direction === "up") {
+            if (arrayStrings[i - 1] < arrayStrings[i] + numberInRow) {
+              return numberInField - (arrayStrings[i] + numberInRow + 1);
+            }
+
+            return numberInField - arrayStrings[i - 1];
+          }
+
+          if (direction === "down") {
+            if (arrayStrings[i + 1] <= arrayStrings[i] + numberInRow) {
+              return numberInField + (arrayStrings[i + 1] - numberInRow - 1);
+            }
+
+            return numberInField + arrayStrings[i];
+          }
+        }
+
+        if (numberInField === this.mainField.value.length && direction === "up") {
+          if (arrayStrings[arrayStrings.length - 2] < arrayStrings[arrayStrings.length - 1]) {
+            return numberInField - (arrayStrings[arrayStrings.length - 1] + 1);
+          }
+
+          return numberInField - arrayStrings[arrayStrings.length - 2];
+        }
+      }
     }
   }]);
 
@@ -868,7 +974,7 @@ var ListSetKey = [{
   textRu: "⮝",
   textRuShift: "⮝",
   size: "normal",
-  assignment: "symbol"
+  assignment: "functional"
 }, {
   key: "Shift",
   code: "ShiftRight",
@@ -940,7 +1046,7 @@ var ListSetKey = [{
   textRu: "⮜",
   textRuShift: "⮜",
   size: "normal",
-  assignment: "symbol"
+  assignment: "functional"
 }, {
   key: "ArrowDown",
   code: "ArrowDown",
@@ -949,7 +1055,7 @@ var ListSetKey = [{
   textRu: "⮟",
   textRuShift: "⮟",
   size: "normal",
-  assignment: "symbol"
+  assignment: "functional"
 }, {
   key: "ArrowRight",
   code: "ArrowRight",
@@ -958,7 +1064,7 @@ var ListSetKey = [{
   textRu: "⮞",
   textRuShift: "⮞",
   size: "normal",
-  assignment: "symbol"
+  assignment: "functional"
 }, {
   key: "Delete",
   code: "Delete",
