@@ -37,7 +37,7 @@ body {
     content: "";
     width: 120px;
     height: 80px;
-    background: url(../assets/image/png/logo.png);
+    background: url(../assets/image/webp/logo.webp);
     background-size: cover;
     // transform: translate(-50%);
   }
@@ -87,7 +87,7 @@ body {
       left: 0;
       right: 0;
       bottom: 0;
-      background: url("../assets/image/png/back.png");
+      background: url("../assets/image/webp/back.webp");
       background-size: cover;
       border-radius: inherit;
       transform: translate3d(0px, -10px, 0px);
